@@ -57,6 +57,7 @@ class GetMail:
                 # Misskeyに投稿
                 print(mail_content.get('content'))
                 data['text'] = mail_content.get('content') + '\ndate: ' + mail_content.get('date')
+                print(settings.HASHTAG)
                 if settings.HASHTAG:
                     data['text'] += '\n' + settings.HASHTAG
                 res = requests.post(settings.MISSKEY_POST_URL, headers=headers, json=data)
