@@ -43,10 +43,16 @@ class GetMail:
                 mail_content = self.bunbetu(content)
 
                 # 件名に想定の文章が含まれていない場合はスキップ
-                print(mail_content.get('subject'))
-                if not mail_content.get('subject') \
-                    or mail_content.get('subject').find(settings.TARGET_SUBJECT) == -1:
+                mail_content_subject = mail_content.get('subject')
+                print(mail_content_subject)
+                if not mail_content_subject:
                     continue
+                if settings.TARGET_SUBJECT:
+                    print('TARGET_SUBJECT: ' + settings.TARGET_SUBJECT)
+                    if str(mail_content_subject).find(settings.TARGET_SUBJECT) == -1:
+                        continue
+                else:
+                    print('ALERT!!!: TARGET_SUBJECT is None')
 
                 # Misskeyに投稿
                 print(mail_content.get('content'))
