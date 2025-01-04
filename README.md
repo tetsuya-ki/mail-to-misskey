@@ -95,3 +95,5 @@ WantedBy=timers.target
   * `sudo systemctl start mail2misskey.timer`
 * タイマー設定の確認
   * `systemctl status mail2misskey.timer`
+* vimで編集したらリロードする
+  * `sudo systemctl daemon-reload`
