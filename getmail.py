@@ -44,7 +44,8 @@ class GetMail:
 
                 # 件名に想定の文章が含まれていない場合はスキップ
                 print(mail_content.get('subject'))
-                if mail_content.get('subject').find(settings.TARGET_SUBJECT) == -1:
+                if not mail_content.get('subject') \
+                    or mail_content.get('subject').find(settings.TARGET_SUBJECT) == -1:
                     continue
 
                 # Misskeyに投稿
@@ -75,6 +76,7 @@ class GetMail:
             return payload
 
     def bunbetu (self, content:str='')->dict:
+        # こういう文章がくるパターンで考えている(違う場合は適宜直してください)
         text = '''
 ________________________________________
 差出人: XXXXX<XXXXX@XXXXX.XXXXX.com>
