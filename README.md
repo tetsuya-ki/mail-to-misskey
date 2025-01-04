@@ -62,7 +62,7 @@ Description=mail to misskey
 Type=oneshot
 User=ubuntu
 WorkingDirectory=/home/ubuntu/python/mail-to-misskey
-ExecStart=/usr/bin/poetry run python discord-reminderbot.py
+ExecStart=/usr/bin/poetry run python getmail.py
 ExecStop=/usr/bin/kill -p $MAINPID
 
 [Install]
