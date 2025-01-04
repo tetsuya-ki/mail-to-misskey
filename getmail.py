@@ -63,16 +63,24 @@ class GetMail:
         charset = msg.get_content_charset()
         payload = msg.get_payload(decode=True)
         print(f'charset: {charset}')
-        print(f'payload: {payload}')
+        # print(f'payload: {payload}')
+        res = payload
         try:
             if payload:
                 if charset:
-                    return payload.decode(charset)
+                    res = payload.decode(charset, 'ignore')
+                    res = res.replace('\u3000', '  ')
+                    print(f'payload(decode by charset): {res}')
+                    return res
                 else:
-                    return payload.decode()
+                    res = payload.decode()
+                    print(f'payload(decode): {res}')
+                    return res
             else:
+                print('payload is ""')
                 return ""
         except:
+            print('payload is not decode')
             return payload
 
     def bunbetu (self, content:str='')->dict:
