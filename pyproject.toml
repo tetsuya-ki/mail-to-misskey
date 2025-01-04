@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "mail-to-misskey"
+version = "0.1.0"
+description = ""
+authors = ["tetsuya-ki <64536338+tetsuya-ki@users.noreply.github.com>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.0.1"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
