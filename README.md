@@ -41,7 +41,7 @@
 * MAIL_PASSWORD
   * メールサーバーにログインするためのパスワード。`zzzzzzzzzzzzzzz`みたいなやつ
 * HASHTAG
-  * Misskeyに投稿する時のハッシュタグ。`#お知らせ #ねこ大好き`みたいに複数も可能。自分で「#」をつけてください
+  * Misskeyに投稿する時のハッシュタグ。`"#お知らせ #ねこ大好き"`みたいに複数も可能。自分で「#」をつけてください。これは`"`で囲う必要があります！
 * TARGET_SUBJECT
   * Misskey投稿する対象のメールの件名
 
@@ -63,7 +63,6 @@ Type=oneshot
 User=ubuntu
 WorkingDirectory=/home/ubuntu/python/mail-to-misskey
 ExecStart=/usr/bin/poetry run python getmail.py
-ExecStop=/usr/bin/kill -p $MAINPID
 
 [Install]
 WantedBy=multi-user.target
@@ -81,6 +80,9 @@ Description=Timer for mail to misskey
 
 [Timer]
 OnCalendar=*-*-* *:00:00
+# これは1時間ごと
+#OnCalendar=*:00/5
+# これは5分ごと(コメントアウト)
 Persistent=true
 
 [Install]
